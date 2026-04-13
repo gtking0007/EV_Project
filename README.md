@@ -19,23 +19,25 @@ A real-time, production-quality collaborative design platform (simplified Figma 
 ## 📁 Project Structure
 
 `	ext
-wireframe-tool/
-├── client/              # Frontend Assets
-│   ├── index.html       # Application Layout
-│   ├── style.css        # Modern UI Styling
-│   ├── script.js        # Main App Bootstrapper
-│   ├── canvas.js        # Canvas Rendering Logic
-│   ├── drag.js          # Drag & Resize Engine
-│   ├── elements.js      # Component Definitions
-│   ├── socketClient.js  # Socket.IO Client Logic
-│   └── ui.js            # Property Panel & UI Control
-├── server/              # Backend Assets
-│   ├── server.js        # Express & Socket Server
-│   ├── socketHandler.js # Real-time Event Logic
-│   ├── routes.js        # Static File Routing
-│   └── utils.js         # Server Utilities
-└── package.json         # Dependencies & Scripts
-`
+```
+├── client
+│   ├── canvas.js
+│   ├── drag.js
+│   ├── elements.js
+│   ├── index.html
+│   ├── script.js
+│   ├── socketClient.js
+│   ├── style.css
+│   └── ui.js
+├── server
+│   ├── routes.js
+│   ├── server.js
+│   ├── socketHandler.js
+│   └── utils.js
+├── README.md
+├── package-lock.json
+└── package.json
+```
 
 ## ⚙️ Installation
 
