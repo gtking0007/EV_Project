@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Wireframing Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- TOP NAVIGATION BAR -->
+        <header class="top-nav">
+            <div class="logo">
+                <i class="fas fa-layer-group"></i>
+                <span>Wireframe.io</span>
+            </div>
+            <div class="collaboration-status" id="status-indicator">
+                <span class="status-dot online"></span>
+                <span id="status-text">Connected</span>
+            </div>
+            <div class="actions">
+                <button id="export-png" class="btn btn-primary"><i class="fas fa-download"></i> Export PNG</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- LEFT SIDEBAR: COMPONENT LIBRARY -->
+            <aside class="sidebar left-sidebar">
+                <h3>Library</h3>
+                <div class="component-list">
+                    <div class="component-item" draggable="true" data-type="button">
+                        <i class="fas fa-square"></i>
+                        <span>Button</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-type="text">
+                        <i class="fas fa-font"></i>
+                        <span>Text Block</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-type="input">
+                        <i class="fas fa-minus"></i>
+                        <span>Input Field</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-type="image">
+                        <i class="fas fa-image"></i>
+                        <span>Image Placeholder</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-type="card">
+                        <i class="far fa-window-maximize"></i>
+                        <span>Card Component</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-type="navbar">
+                        <i class="fas fa-window-minimize"></i>
+                        <span>Navbar</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CENTER PANEL: CANVAS WORKSPACE -->
+            <section class="canvas-panel">
+                <div id="canvas" class="design-canvas">
+                    <!-- Elements will be rendered here -->
+                </div>
+            </section>
+
+            <!-- RIGHT SIDEBAR: PROPERTIES EDITOR -->
+            <aside class="sidebar right-sidebar">
+                <h3>Properties</h3>
+                <div id="no-selection-message" class="sidebar-empty">
+                    <p>Select an element to edit properties</p>
+                </div>
+                <div id="properties-panel" class="properties-content hidden">
+                    <div class="property-group">
+                        <label>ID</label>
+                        <input type="text" id="prop-id" readonly class="readonly-input">
+                    </div>
+                    <div class="property-group">
+                        <label>Text Content</label>
+                        <textarea id="prop-text" rows="2"></textarea>
+                    </div>
+                    <div class="property-row">
+                        <div class="property-group">
+                            <label>X</label>
+                            <input type="number" id="prop-x">
+                        </div>
+                        <div class="property-group">
+                            <label>Y</label>
+                            <input type="number" id="prop-y">
+                        </div>
+                    </div>
+                    <div class="property-row">
+                        <div class="property-group">
+                            <label>Width</label>
+                            <input type="number" id="prop-width">
+                        </div>
+                        <div class="property-group">
+                            <label>Height</label>
+                            <input type="number" id="prop-height">
+                        </div>
+                    </div>
+                    <div class="property-group">
+                        <label>Color</label>
+                        <div class="color-picker-container">
+                            <input type="color" id="prop-color" value="#ffffff">
+                            <input type="text" id="prop-color-hex" value="#ffffff">
+                        </div>
+                    </div>
+                    <div class="property-group">
+                        <label>Text Color</label>
+                        <div class="color-picker-container">
+                            <input type="color" id="prop-text-color" value="#000000">
+                            <input type="text" id="prop-text-color-hex" value="#000000">
+                        </div>
+                    </div>
+                    <div class="property-group">
+                        <label>Layering</label>
+                        <div class="property-row">
+                            <button id="bring-to-front" class="btn btn-secondary btn-sm" title="Bring to Front"><i
+                                    class="fas fa-layer-group"></i> Front</button>
+                            <button id="send-to-back" class="btn btn-secondary btn-sm" title="Send to Back"><i
+                                    class="fas fa-layer-group fa-flip-vertical"></i> Back</button>
+                        </div>
+                    </div>
+                    <button id="delete-element" class="btn btn-danger"><i class="fas fa-trash"></i> Delete
+                        Element</button>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- EXTERNAL LIBRARIES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="elements.js"></script>
+    <script src="drag.js"></script>
+    <script src="socketClient.js"></script>
+    <script src="ui.js"></script>
+    <script src="canvas.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
