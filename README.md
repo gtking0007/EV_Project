@@ -18,7 +18,7 @@ A real-time, production-quality collaborative design platform (simplified Figma 
 
 ## 📁 Project Structure
 
-`	ext
+
 ```
 ├── client
 │   ├── canvas.js
